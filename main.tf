@@ -29,10 +29,10 @@ variable "k8s_name" {}
 variable "region" {}
 
 output "kube_endpoint" {
-  value = digitalocean_kubernetes_cluster.k8s_iniciativa_devops.endpoint
+  value = digitalocean_kubernetes_cluster.var.k8s_name.endpoint
 }
 
 resource "local_file" "kube_config" {
-    content = digitalocean_kubernetes_cluster.k8s_iniciativa_devops.kube_config.0.raw_config
+    content = digitalocean_kubernetes_cluster.var.k8s_name.kube_config.0.raw_config
     filename = "kube_config.yaml"
 }
